@@ -23,6 +23,7 @@ App.controller('TokenController', ['$scope', 'TokenService', function($scope, To
                           console.log("scontroller :createToken ");
                          // console.log(d);
                           self.token = angular.copy(d);
+                          fileUploadService.containerClient.config.uuidGPA=self.token.token;
                           console.log(self.token.token);
                           
                           

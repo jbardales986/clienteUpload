@@ -1,0 +1,112 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footable-block .footable-row-detail-row {
+    display: block;
+    padding-bottom: 1em;
+}
+
+.footable-block .footable-row-detail-group {
+    display: block;
+}
+
+.footable-block .footable-row-detail-name {
+    display: block;
+}
+
+.footable-block .footable-row-detail-value {
+    display: block;
+}
+
+.table-no-border>tbody>tr>th,
+.table-no-border>tbody>tr>td {
+    border: none;
+}
+
+.row-form {
+    margin-bottom: 15px;
+}
+
+.mayusculas {
+    text-transform: uppercase;
+}
+
+.radio.pull-left {
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 240px) {
+    .popover {
+        min-width: 160px;
+    }
+}
+@media screen and (min-width: 241px) {
+    .popover {
+        min-width: 200px;
+    }
+}
+@media screen and (min-width: 769px) {
+    .popover {
+        min-width: 320px;
+    }
+}
+
+.nav.nav-panel{
+    float: right;
+}
+
+.panel-heading.has-nav{
+    padding-bottom: 0;
+}
+
+.nav.nav-pills.nav-panel{
+    margin: -1.7em 0 0 0;
+}
+
+
+.nav.nav-pills.nav-panel li a{
+    padding: 6px 15px;
+}
+
+.nav.nav-tabs.nav-panel{
+    border: none;
+    margin: -1.75em 0 0 0;
+}
+
+.nav.nav-tabs.nav-panel li{
+    margin-bottom: -1px;
+}
+
+.nav.nav-tabs.nav-panel li a{
+    padding: 8px 15px;
+}
+
+.glyphicon.panel-indicator:before{
+    content: "\e114";
+}
+
+.collapsed .glyphicon.panel-indicator:before{
+    content: "\e080";
+}
+
+@media screen and (max-width: 768px) {
+    .nav.nav-tabs.nav-panel li a{
+        padding: 8px 15px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .nav.nav-tabs.nav-panel{
+    }
+
+    .nav.nav-pills.nav-panel{
+        margin-bottom: 2px;
+    }
+}
+@media screen and (min-width: 481px) {
+    .nav.nav-tabs.nav-panel{
+        float: right;
+    }
+}

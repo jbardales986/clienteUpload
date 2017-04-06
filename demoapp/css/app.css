@@ -77,5 +77,682 @@ body, .form-control{
   .email.ng-dirty.ng-invalid-email {
       background-color: yellow;
   }
-  
 
+/* bootstrap*/
+/*
+* CSS comunes para la APP.
+*/
+/*
+* CSS comunes para la APP.
+*/
+
+body {
+  font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+}
+
+.container {
+  margin-top: 17px;
+}
+
+.container.uploadContainer {
+  width: 100%;
+}
+
+.container.uploadContainer.uploadAnulacionContainer {
+  width: 52%;
+}
+
+
+ 
+.container.uploadModalContainer {
+  width: 80%;
+}
+
+.container.uploadModalContainerMedium {
+  width: 70%;
+}
+
+.container.uploadModalContainerSmall {
+  width: 60%;
+} 
+ 
+.container.uploadModalContainerSmaller {
+  width: 50%;
+}
+
+.container.uploadModalContainerSmallest {
+  width: 40%;
+}
+
+.container.uploadModalContainerMoreSmallest {
+  width: 35%;
+}
+
+.uploadModalContainerAuxiliar {
+  /*Esta clase se usa en JS, y debe tener el mismo valor que .container.uploadModalContainer*/
+  width: 80%;
+}
+
+.container.uploadModalConsultarDetalleContainer {
+  width: 90%;
+}
+
+.uploadModalConsultarDetalleContainerAuxiliar {
+  /*Esta clase se usa en JS, y debe tener el mismo valor que .container.uploadModalConsultarDetalleRendicionContainer*/
+  width: 90%;
+}
+
+.container.uploadMensajeConfirmacionContainer {
+  width: 350px;
+}
+
+.uploadMensajeConfirmacionContainer .panel {
+  border: none;
+}
+
+.uploadMensajeConfirmacionContainer.verticalAlignmentHelper {
+  display: table;
+  height: 100%;
+}
+
+.uploadMensajeConfirmacionContainer .verticalAlignCenter {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.uploadMensajeConfirmacionContainer .panel-heading.divuploadMensajeConfirmacionContainer {
+  /*font-weight: bold;*/
+  text-align: justify;
+}
+
+.uploadMensajeConfirmacionContainer .panel-heading.divErroruploadMensajeConfirmacionContainer {
+  font-weight: bold;
+  text-align: justify;
+}
+
+.uploadMensajeConfirmacionContainer .txtTextJustifyClase {
+  text-align: justify;
+}
+
+.uploadMensajeConfirmacionContainer .txtTextLeftClase {
+  text-align: left;
+}
+
+.uploadContainer .divIeComponentUploadClass {
+  display: none;
+}
+
+.uploadMensajeConfirmacionContainer .txtTextCenterClase {
+  text-align: center;
+}
+
+.uploadMensajeConfirmacionContainer .txtTextRightClase {
+  text-align: right;
+}
+
+.container.uploadMensajeConfirmacionContainerBigger {
+  width: 400px;
+}
+
+.container.uploadMensajeConfirmacionContainerBiggest {
+  width: 500px;
+}
+
+.uploadMensajeConfirmacionContainerBigger .panel {
+  border: none;
+}
+
+.uploadMensajeConfirmacionContainerBiggest.panel {
+  border: none;
+}
+
+.uploadMensajeConfirmacionContainerBigger.verticalAlignmentHelper {
+  display: table;
+  height: 100%;
+}
+
+.uploadMensajeConfirmacionContainerBiggest.verticalAlignmentHelper {
+  display: table;
+  height: 100%;
+}
+
+
+.uploadMensajeConfirmacionContainerBigger .verticalAlignCenter {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.uploadMensajeConfirmacionContainerBiggest .verticalAlignCenter {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.uploadContainer .divIeComponentuploadClass {
+  display: none;
+}
+
+.uploadContainer .divHiddenClase {
+  display: none;
+}
+
+.uploadContainer .divError {
+  color: #990000;
+  display: none;
+  text-align: justify;
+}
+
+.errorContainerClass {
+  background: transparent;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.errorContainerClass .container.uploadErrorContainer {
+  margin-top: 0px;
+}
+
+
+
+@media (min-width: 768px) {
+
+  .noLeftPadding { 
+  padding-left: 0px; 
+  }
+
+  .noRightPadding { 
+  padding-right: 0px; 
+  }
+  
+}
+
+/* CSS - Loading */
+
+.divLoadingClase {
+  display: none;
+}
+
+.divLoadingCompleteRowClase {
+  display: none;
+  margin-top: -18px;
+}
+
+.divLoadingClase img, .divLoadingCompleteRowClase img {
+  vertical-align: middle;
+}
+
+/* CSS - Panel */
+
+.panel-heading {
+  height: 33px;
+}
+
+.container.uploadMensajeConfirmacionContainer .panel-heading {
+  height: auto;
+}
+
+.container.uploadMensajeConfirmacionContainerBigger .panel-heading {
+  height: auto;
+}
+
+.container.uploadMensajeConfirmacionContainerBiggest .panel-heading {
+  height: auto;
+}
+
+.container.uploadContainer .panel.panel-info.panelPagerButtonClass {
+  border-color: #fff;
+  margin-bottom: 0px;
+}
+
+.container.uploadContainer .panel.panel-info.panelPagerButtonClass .panel-body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* CSS - Panel Collapse*/
+
+.panelCollapseClass .panel-heading .imagePanelCollapseClass {
+  float: left;
+}
+
+.panelCollapseClass .panel-heading .tituloPanelCollapseClass {
+  float: left;
+  padding-left: 2px;
+  padding-top: 2px;
+}
+
+.panelCollapseClass .panel-heading .imagePanelCollapseClass img {
+  width: 15px;
+  height: 15px;
+}
+
+.panelCollapseClass .collapseComponentClass {
+  display: block;
+}
+
+/* CSS - Fieldset */
+
+.container fieldset {
+  border: 1px solid #bce8f1 !important;
+  border-radius: 4px;
+  padding: 0 5px 5px 5px !important;
+  margin: 4px 0 8px 0 !important;
+  -webkit-box-shadow:  0px 0px 0px 0px #bce8f1;
+  box-shadow:  0px 0px 0px 0px #bce8f1;
+}
+
+.container legend {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  color: #31708f;
+  width: inherit; /* Or auto */
+  padding: 0 10px; /* To give a bit of padding on the left and right */
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+/* CSS - Tables */
+
+.ui-jqgrid .ui-pg-input {
+  height: 18px;
+  font-size:.8em;
+  margin: 0;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th {
+  height: 33px;
+}
+
+.ui-jqgrid .ui-jqgrid-pager {
+  height: 28px;
+  font-size: 12px;
+}
+
+.ui-pg-table {
+  height: 100%;
+}
+
+.ui-pager-control, .ui-pager-control tr {
+  height: 100%;
+}
+
+.ui-jqgrid-sortable {
+  color: #777;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ui-widget-content .ui-state-default {
+  background: #f6f6f6;
+}
+
+.ui-widget-content .ui-state-hover {
+  background: #bce8f1;
+}
+
+.ui-state-default.ui-th-column.ui-th-ltr.ui-state-hover {
+  border-right-color: #ccc;
+}
+
+.ui-widget-content.jqgrow.ui-row-ltr.ui-state-hover {
+  border-top-color: #ccc;
+  border-right-color: #ccc;
+  border-bottom-color: #ccc;
+  border-left-color: #ccc;
+}
+
+.ui-widget-content.jqgrow.ui-row-ltr.ui-state-highlight {
+  background-color: #ffe45c;
+}
+
+.ui-widget-content.jqgrow.ui-row-ltr.ui-state-highlight td {
+  background-color: #ffe45c;
+  border-color: #ccc;
+}
+
+.ui-jqgrid-title {
+  font-size: 12px;
+  color: #fff;
+}
+
+.ui-widget-header {
+  height: 33px;
+  background-color: #337ab7;
+  background-image: none;
+  border-bottom-color: #ccc;
+}
+
+.ui-jqgrid .ui-jqgrid-titlebar {
+  padding-top: 7px;
+}
+
+.jqGridUpload th.ui-th-column div{
+  white-space: normal !important;
+  height: auto !important;
+  padding: 2px;
+}
+
+.jqGridUploadPagerClass table tr td:first-child {
+  font-weight: bold;
+  padding-left: 4px;
+  color: #990000;
+}
+
+.jqGridUploadWithVerticalScroll .ui-jqgrid-bdiv {
+  overflow-y: scroll !important;
+  width: 99.78% !important;
+}
+
+/*CSS - Button - Hiperlink*/
+
+.buttonHiperlinkClass {
+  background: none!important;
+  border: none; 
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #069;
+}
+
+/*CSS - Color Font*/
+.UploadContainer .colorFontRedTableClass {
+  color: #990000;
+}
+
+.UploadContainer .colorFontOrangeTableClass {
+  color: #ff8121;
+}
+
+.UploadContainer .colorFontPinkTableClass {
+  color: #e8207a;
+}
+
+.UploadContainer .colorFontDarkGreenTableClass {
+  color: #117811;
+}
+
+.UploadContainer .colorFontDarkGreen2TableClass {
+  color: #008045;
+}
+
+.UploadContainer .colorFontGreenTableClass {
+  color: #61c419;
+}
+
+.UploadContainer .colorFontGreen2TableClass {
+  color: #00AA00;
+}
+
+.UploadContainer .colorFontTurquesaTableClass {
+  color: #4096ee;
+}
+
+.UploadContainer .colorFontAzulMarinoTableClass {
+  color: #1C4B7A;
+}
+
+.UploadContainer .colorFontCelesteTableClass {
+  color: #1C94C4;
+}
+
+.UploadContainer tr.jqgrow.boldFontTableClass td {
+  font-weight: bold;
+}
+
+.UploadContainer tr.jqgrow.bolderFontTableClass td {
+  font-weight: bolder;
+}
+
+
+a.jqGridUploadLinkClass {
+  text-decoration: underline;
+  cursor: pointer;
+  color: inherit;
+}
+
+a.jqGridUploadLinkClass:hover  {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #337ab7;
+}
+
+.jqGridUploadPagerClass.jqGridUploadWithoutPagerClass .ui-pg-table {
+  display: none;
+}
+
+.jqGridUpload span.jqGridUploadSemaphoreRedCell {
+  display: block;
+  background-image: none;
+  margin-right: -2px;
+  margin-left: -2px;
+  height: 20px;
+  padding: 4px;
+  text-align: center;
+  background-color: #990000;
+  color: white;
+}
+
+.jqGridUpload span.jqGridUploadSemaphoreGreenCell {
+  display: block;
+  background-image: none;
+  margin-right: -2px;
+  margin-left: -2px;
+  height: 20px;
+  padding: 4px;
+  text-align: center;
+  background-color: #008045;
+  color: white;
+}
+
+a.jqGridUploadTooltipClass {
+  color: inherit;
+  white-space: pre-wrap;
+  display: inline-block;
+    width: 100%;
+}
+
+/* CSS - Tables - Boton de despliegue*/
+
+.ui-jqgrid-titlebar-close.ui-corner-all.HeaderButton {
+  display: none;
+}
+
+/* CSS - Date Time Picker */
+
+.datepicker {
+  font-size: 12px;
+}
+
+.timepicker-picker .timepicker-hour, .timepicker-picker .separator, .timepicker-picker .timepicker-minute, .timepicker-picker .btn {
+  font-size: 12px;
+}
+
+.dateTimeHouruploadClass .bootstrap-datetimepicker-widget table td, .dateTimeHouruploadClass .bootstrap-datetimepicker-widget table td span {
+    height: 30px;
+    line-height: 30px;
+}
+
+.dateTimeHouruploadClass .bootstrap-datetimepicker-widget table td {
+    padding: 0px;
+}
+
+/* CSS - Boton */
+
+.btn-impar-three-margin {
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-bottom: 0.2%;
+}
+
+.btn-impar-one-margin {
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-bottom: 0.2%;
+}
+
+.pAdvertencia {
+  color: red;
+  font-size: 10px;
+}
+
+.panel-body-anulacion {
+  margin-bottom: 1px;
+  padding-bottom: 0px;
+  padding-top: 6px;
+}
+  
+/**Inicio pagina de alerta**/
+.uploadContainerError {
+  margin: 0 auto;
+  margin-top: 14%;
+  color: #a94442;
+  text-align: center;
+}
+
+.uploadContainerError img {
+  float: left;
+}
+
+.spaMensajeError {
+  line-height: 3;
+}
+/**Fin pagina de alerta**/
+
+.posicionRight {
+  float: right;
+}
+
+/*Label*/
+.colorFontRedClass {
+  color: #990000;
+}
+
+.colorFontOrangeClass {
+  color: #ff8121;
+}
+
+/*DatePicker - Modal*/
+.datepicker.dropdown-menu.centerRight {
+  z-index: 80000;
+}
+
+/* CSS - Tooltip */
+
+.uploadContainer .tooltip {
+  font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
+  font-size: 10px !important;
+  padding: 4px 6px !important;
+  text-transform: uppercase;
+  max-width: 800px !important;
+}
+
+.uploadContainer .tooltip-inner {
+  max-width: 150px;
+  white-space: pre-wrap;
+}
+
+/*CSS - General*/
+
+.paddingTop10 {
+  padding-top: 10px;
+}
+
+.paddingTop14 {
+  padding-top: 14px;
+}
+
+.paddingTop15 {
+  padding-top: 15px;
+}
+
+.paddingTop20 {
+  padding-top: 20px;
+}
+
+.paddingTop25 {
+  padding-top: 25px;
+}
+
+.marginBottom10 {
+  margin-bottom: 10px;
+}
+
+.upperCaseTextClase {
+  text-transform: uppercase;
+}
+
+.lineauploadClase {
+  border: none;
+  border-top: 1px solid #bce8f1;
+  /*border-top: 2px solid #bce8f1;*/
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+}
+
+/*Media Queries*/
+
+@media (max-width: 991px) {
+  .paddingTop10XSmallTablet {
+    padding-top: 10px;
+  }
+  
+  .radio-inline.radioButtonUploadClass {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .paddingLeftRightZeroClase {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .paddingLeftRightZeroWithSpaceClase {
+    padding-left: 0px;
+    padding-right: 1px;
+  }
+  
+  .paddingLeftZeroClase {
+    padding-left: 0px;
+  }
+  
+  .paddingRightZeroClase {
+    padding-right: 0px;
+  }
+}
+
+.popup-alineado-justify {
+  text-align: justify;
+}
+
+.popup-alineado-left {
+  text-align: left;
+}
+
+.no-gutter > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+
+.form-group label {
+    float: left;
+    text-align: left;
+}
+
+.form-group select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}

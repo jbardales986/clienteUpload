@@ -39,14 +39,44 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	var uploader = new SocketIOFileUpload(socket);
 	uploader.addEventListener("complete", function(event){
 		console.log(event);
-		console.log( event.detail.fileexternal);
-		flash("Carga Completa: "+event.file.name);//aqui se cambia por poppup personales
+		//console.log( event.detail.fileexternal);
+		console.log( event.detail.fileexternal.name);
+		console.log( event.detail.fileexternal.extension);
+		console.log( event.detail.fileexternal.sizeLabel);
+		
+		var FileExternal= {
+						uuidGPA	: event.detail.fileexternal.uuidGPA ,
+						uuidFile :event.detail.fileexternal.uuidFile ,
+						idStore	: '',
+						name	: event.detail.fileexternal.name ,
+						extension : event.detail.fileexternal.extension ,
+						mimeType  : event.detail.fileexternal.mimeType ,
+						sizeBytes : event.detail.fileexternal.sizeBytes ,
+						sizeLabel : event.detail.fileexternal.sizeLabel ,
+						idOperacion : 1
+						};
+		fileUploadService.containerClient.data.push(FileExternal);
+		console.log("rows:" +  fileUploadService.containerClient.data.length );
+		var fileTable = $("#tblFiles");
+		var datarow = {
+							row :fileUploadService.containerClient.data.length,
+							name: FileExternal.name,
+							sizeLabel: FileExternal.sizeLabel,
+							extension: FileExternal.extension
+						};
+		fileTable.jqGrid("addRowData", event.detail.fileexternal.name, datarow);
+		fileTable.trigger("reloadGrid");
+		hideElement(fileUploadService.idDivLoading);
+		fileUploadService.showMessageInfo("Se Cargo Correctamente el Archivo");
+		
+		//flash("Carga Completa: "+event.file.name);//aqui se cambia por poppup personales
 	});
 	uploader.addEventListener("choose", function(event){
-		flash("Archivos seleccionados: "+event.files);
+		//flash("Archivos seleccionados: "+event.files);
 	});
 	uploader.addEventListener("start", function(event){
-
+		showElement(fileUploadService.idDivLoading);
+		console.log("GPA:" + fileUploadService.containerClient.config.uuidGPA);
 		event.file.meta.token = document.getElementById("tokenApp").value ;
 	});
 	uploader.addEventListener("progress", function(event){
@@ -58,13 +88,30 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 		console.log(event);
 	});
 	uploader.addEventListener("error", function(event){
-		flash("Error: "+event.message);
+		//flash("Error: "+event.message);
+		hideElement(fileUploadService.idDivLoading);
 		console.log(event.message);
 		if (event.code === 1) {
-			alert("No se puede subir un archivo tan Grande");
+			fileUploadService.showMessageError("El tamaño maximo de carga de archivo es :" + fileUploadService.containerClient.config.maxSizeBytesLabel );
+			fileUploadService.startAfterMethod();
+			//alert("No se puede subir un archivo tan Grande");
+		}else{
+			fileUploadService.showMessageError(event.message);
 		}
 	});
-	uploader.maxFileSize = 500000000;
+	//uploader.maxFileSize = 500 000 000;//500 mb
+	//uploader.maxFileSize = 1 000 000;//1 mb
+	if (typeof fileUploadService != "undefined") {
+		console.log(" esta fileUploadService");
+		console.log(fileUploadService.containerClient.jsonConfig);
+		console.log(fileUploadService.containerClient.config.maxSizeBytes);
+	}else{
+		console.log("no esta ");
+	}
+
+	//uploader.maxFileSize = 1000000;//1 mb
+	uploader.maxFileSize = fileUploadService.containerClient.config.maxSizeBytes;
+	fileUploadService.containerClient.data = new Array();
 	uploader.useBuffer = true;
 	uploader.chunkSize = 1024 * 1024;
 	//uploader.useText = true;

@@ -7,12 +7,18 @@
   <link rel="stylesheet" href="">
     <title>Cliente Carga y  Token</title>  
   
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-     <link href="css/app.css"  rel="stylesheet"></link>
-     
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+   
+     <link rel="stylesheet" href="../static/js/libs/bootstrap/3.3.1/css/bootstrap.min.css" />
+      <!-- CSS - Tables -->
+      <link rel="stylesheet" href="../static/js/libs/bootstrap/3.3.1/css/jquery.dataTables.css" />
+      <link rel="stylesheet" href="../static/js/libs/jquery-ui/1.11.2/css/jquery-ui.min.css" />
+      <link rel="stylesheet" href="../static/js/libs/jqgrid/4.6.0/css/ui.jqgrid.css" />
+
+        <link href="css/app.css"  rel="stylesheet"></link>
   </head>
   <body ng-app="myApp" class="ng-cloak">
-      <div class="generic-container" ng-controller="TokenController as ctrl">
+      <div class="container uploadContainer" ng-controller="TokenController as ctrl">
           <div class="panel panel-default">
               <div class="panel-heading"><span class="lead">Token   Ciente</span></div>
               <div class="formcontainer">
@@ -64,25 +70,130 @@
           <div class="panel panel-default">
                 <!-- Default panel contents -->
               <div class="panel-heading"><span class="lead">Cargar Archivo</span></div>
-              <button id="ul_btn">Seleccione un Archivo</button>
+              <button id="ul_btn">Seleccione un Archivo</button> <br>
+              <div id="divLoadingUploadFile" class="col-xs-3 col-sm-3 col-md-2 col-lg-2 divLoadingClase">
+                  <span>
+                    <img src="../static/images/loader.gif" alt="loader">Cargando
+                  </span>
+            </div>
+            <input type="file" id="plain_input_element"/><br>
 
-            <input type="file" id="plain_input_element"/>
+           
+          
           
             <div id="file_drop" dropzone="copy" title="drop files for upload">Arraste un archivo Aquí</div>
 
            
-             </div>
-      </div>
-          
+          </div><!-- panel-->
+          <div id="divJqGridFiles" class="row jqGridUpload">
+                  <div id="divFilesTable" class="col-xs-12">
+                    <table id="tblFiles"></table>
+
+                    <div id="divFilesPagerTable" class="jqGridUploadPagerClass"></div>
+                  </div>
+        </div><!-- divJqGridFiles-->
+          <div id="divScreenBlock" class="modal fade" data-keyboard="false" data-backdrop="static" >
+                <div class="container verticalAlignmentHelper">
+                  <div class="row verticalAlignCenter">
+                  </div>
+                </div>
+          </div>
+
+          <div id="divAlertMensajeError" class="modal fade" data-keyboard="false" data-backdrop="static" >
+                <div class="container uploadMensajeConfirmacionContainer verticalAlignmentHelper">
+                  <div class="row verticalAlignCenter">
+                    <div class="col-xs-12">
+                      <div class="panel panel-danger">
+                        <div class="panel-heading text-center"><span id="spaMensajeAlertaError"></span></div>
+                        <div class="panel-body">
+                          <div class="row paddingTop10 marginBottom10">
+                            <div class="text-center">                            
+                              <button id="btnAlertMensajeError" type="button" class="btn btn-danger btn-sm">Aceptar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div><!--divAlertMensajeError -->  
+          <div id="divMensajeConfirmar" class="modal fade" data-keyboard="false" data-backdrop="static" >
+                <div class="container uploadMensajeConfirmacionContainer verticalAlignmentHelper">
+                  <div class="row verticalAlignCenter">
+                    <div class="col-xs-12">
+                      <div class="panel panel-primary">
+                        <div class="panel-heading text-center"><span id="spanMensajeConfirmar"></span></div>
+                        <div class="panel-body">
+                          <div class="row paddingTop10 marginBottom10">
+                            <div class="text-center">                            
+                              <button id="btnMensajeConfirmar" type="button" class="btn btn-primary btn-sm center-block centerBlockBotonSmallClass">Aceptar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div><!--divMensajeConfirmar -->  
+          <div id="divScreenBlock" class="modal fade" data-keyboard="false" data-backdrop="static" >
+                <div class="container verticalAlignmentHelper">
+                  <div class="row verticalAlignCenter">
+                  </div>
+                </div>
+          </div><!--divScreenBlock -->  
+        </div>
+        
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-      <script
+      <script src="../static/js/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="../static/js/libs/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!-- JS - Tables -->
+    <script src="/../static/js/libs/jquery/1.11.1/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="../static/js/libs/jqgrid/4.6.0/js/jquery.jqGrid.src.js"></script>
+    <script src="../static/js/libs/jqgrid/4.6.0/js/i18n/grid.locale-es.js"></script>
+    <script src="../static/js/libs/jquery-ui/1.11.2/js/jquery-ui.min.js"></script>
+     <script src="../static/js/common.js"></script>
+      <!--<script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script> -->
     
       <script src="js/app.js"></script>
       <script src="js/service/token_service.js"></script>
+       <script src="js/service/service_upload.js"></script>
+      <script src="js/demo.js"></script>
       <script src="js/controller/token_controller.js"></script>
-       <script data-main="../static/js/config.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+      <script type="text/javascript">
+      
+    var configUpload = {
+      uuidGPA: '12',
+      extensions:'pdf',
+      maxSizeBytes :5000000,
+      maxSizeBytesLabel : "5 Mb",
+      langTag:'es'
+    };
+    var fileUpload=[];
+    var ContainerClient ={ 
+      jsonConfig : 'default',
+      config : configUpload,
+      data : fileUpload
+    };
+      
+      
+      $(document).ready(function() {
+        initElementsUploadService(ContainerClient);
+      
+        /*Soporte Multiple Modals*/
+        $(".modal").on("hidden.bs.modal", function(e) {
+          if ($(".modal").hasClass("in")) {
+            $("body").addClass("modal-open");
+          }
+        });
+
+      });
+
+      
+    </script>
+     <script data-main="../static/js/config.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
   </body>
 </html>
