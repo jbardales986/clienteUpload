@@ -12,7 +12,7 @@ App.controller('TokenController', ['$scope', 'TokenService', function($scope, To
       						        self.tokens = d;
       					       },
             					function(errResponse){
-            						console.error('Error while fetching Currencies');
+            						console.log('Error while fetching Currencies');
             					}
       			       );
           };
@@ -28,7 +28,7 @@ App.controller('TokenController', ['$scope', 'TokenService', function($scope, To
                           
                        },
                       function(errResponse){
-                        console.error('Error save token');
+                        console.log('Error save token');
                       }
                    );
              
@@ -63,7 +63,7 @@ App.controller('TokenController', ['$scope', 'TokenService', function($scope, To
 
           
           self.reset = function(){
-              self.token={id:null,user:'',email:''};
+              self.token={id:null,user:'',email:'', token:''};
               $scope.myForm.$setPristine(); //reset Form
           };
 

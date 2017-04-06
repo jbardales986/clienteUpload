@@ -6,7 +6,7 @@ requirejs.config({
 });
 
 require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
-	// jQuery version
+	// jQuery version //Cambiar por estilo de osce
 	function flash(message){
 		(function(message){
 			var flsh = $("<div></div>");
@@ -21,7 +21,7 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 		})(message);
 	}
 
-	// non-jQuery version
+	// non-jQuery version// cambiar por estilos de osce
 	function flash(message){
 		(function(message){
 			var flsh = document.createElement("div");
@@ -39,10 +39,11 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	var uploader = new SocketIOFileUpload(socket);
 	uploader.addEventListener("complete", function(event){
 		console.log(event);
-		flash("Upload Complete: "+event.file.name);
+		console.log( event.detail.fileexternal);
+		flash("Carga Completa: "+event.file.name);//aqui se cambia por poppup personales
 	});
 	uploader.addEventListener("choose", function(event){
-		flash("Files Chosen: "+event.files);
+		flash("Archivos seleccionados: "+event.files);
 	});
 	uploader.addEventListener("start", function(event){
 
@@ -50,17 +51,17 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	});
 	uploader.addEventListener("progress", function(event){
 		console.log(event);
-		console.log("File is", event.bytesLoaded/event.file.size*100, "percent loaded");
+		console.log("El archivo esta ", event.bytesLoaded/event.file.size*100, "porcentaje cargado");
 	});
 	uploader.addEventListener("load", function(event){
-		flash("File Loaded: "+event.file.name);
+		flash("Archivo cargado: "+event.file.name);
 		console.log(event);
 	});
 	uploader.addEventListener("error", function(event){
 		flash("Error: "+event.message);
 		console.log(event.message);
 		if (event.code === 1) {
-			alert("Don't upload such a big file");
+			alert("No se puede subir un archivo tan Grande");
 		}
 	});
 	uploader.maxFileSize = 500000000;

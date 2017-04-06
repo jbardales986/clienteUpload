@@ -11,7 +11,7 @@ App.factory('TokenService', ['$http', '$q', function($http, $q){
 										return response.data;
 									}, 
 									function(errResponse){
-										console.error('Error while fetching token');
+										console.log('Error while fetching token');
 										return $q.reject(errResponse);
 									}
 							);
@@ -24,7 +24,7 @@ App.factory('TokenService', ['$http', '$q', function($http, $q){
 										return response.data;
 									}, 
 									function(errResponse){
-										console.error('Error while creating token');
+										console.log('Error while creating token');
 										return $q.reject(errResponse);
 									}
 							);
