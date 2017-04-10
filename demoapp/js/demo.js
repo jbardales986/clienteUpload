@@ -64,16 +64,28 @@ function setInitFilesTable() {
 				"Nro",
 				"Nombre",
 				"Tamaño",
-				"Extensión",
+				
 				"icono"
 
 			],
 			colModel: [
 				{name: "row", index: "row", width: (3.5*widthTable/20), fixed: true, frozen: true,align: "center"} ,
-				{name: "name", index: "name", width: (3.5*widthTable/20), fixed: true, frozen: true,align: "center"} ,
+				{name: "name", index: "name", width: (3.5*widthTable/20), fixed: true, frozen: true,align: "center",
+				formatter: function(cellValue, options, rowData) {
+						htmlElement = "";
+							htmlElement = "<a class=\"jqGridUploadLinkClass\" onclick=\"clickLinkDescargarDocumento('" + rowData.row + "');\">" + cellValue + "</a>";
+						return htmlElement;
+					}
+				} ,
 				{name: "sizeLabel", index: "sizeLabel", width: (1.5*widthTable/20), fixed: true, frozen: true , align: "left"},
-				{name: "extension", index: "extension", width: (1.5*widthTable/20), fixed: true, frozen: true ,align: "center"},
-				{name: "sizeLabel", index: "sizeLabel", width: (4.5*widthTable/20), fixed: true, frozen: true, align: "center"}
+				
+				{name: "eliminar", index: "eliminar", width: (4.5*widthTable/20), fixed: true, frozen: true, align: "center",
+				formatter: function(cellValue, options, rowData) {
+						htmlElement = "";
+							htmlElement = "<a class=\"jqGridUploadLinkClass\" onclick=\"clickLinkEliminarDocumento('" + rowData.row + "');\">Eliminar</a>";	
+						return htmlElement;
+					}
+				}
 
 			],
 			rowattr: function(dataTable) {
@@ -86,4 +98,14 @@ function setInitFilesTable() {
 		//filesTable.jqGrid("setFrozenColumns");
 		filesTable.clearGridData();
 	}
+}
+
+function clickLinkDescargarDocumento(row){
+		console.log(" clickLinkDescargarDocumento" + row);
+		var fileTemp= fileUploadService.containerClient.data[row - 1];
+		console.log(fileTemp);
+		var encodeParam = "0/uuid/"+fileTemp.uuidFile+"/gpa/"+fileTemp.uuidGPA;
+		console.log("nombre:" +  fileTemp.name);
+
+	location.href = contextPathUrlDownload + "/downloaddocument/" + encodeParam;
 }

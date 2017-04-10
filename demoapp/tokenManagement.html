@@ -67,25 +67,25 @@
                   </form>
               </div>
           </div>
-          <div class="panel panel-default">
-                <!-- Default panel contents -->
-              <div class="panel-heading"><span class="lead">Cargar Archivo</span></div>
-              <button id="ul_btn">Seleccione un Archivo</button> <br>
-              <div id="divLoadingUploadFile" class="col-xs-3 col-sm-3 col-md-2 col-lg-2 divLoadingClase">
-                  <span>
-                    <img src="../static/images/loader.gif" alt="loader">Cargando
-                  </span>
-            </div>
-            <input type="file" id="plain_input_element"/><br>
+          
+           <!-- <input type="file" id="plain_input_element"  accept=".jpg, .png, .jpeg, .gif, .bmp, .tif" /><br> -->
 
            
           
           
-            <div id="file_drop" dropzone="copy" title="drop files for upload">Arraste un archivo Aquí</div>
+            <!-- <div id="file_drop" dropzone="copy" title="drop files for upload">Arraste un archivo Aquí</div> -->
 
            
-          </div><!-- panel-->
+       
           <div id="divJqGridFiles" class="row jqGridUpload">
+                  <div id="divButtonAgregar" class="col-xs-12">
+                      <div id="divLoadingUploadFile" class="col-xs-3 col-sm-3 col-md-2 col-lg-2 divLoadingClase">
+                        <span>
+                          <img src="../static/images/loader.gif" alt="loader">Cargando
+                        </span>
+                      </div>
+                       <button id="ul_btn"  type="button" class="btn btn-primary btn-sm" >Agregar</button> 
+                  </div>
                   <div id="divFilesTable" class="col-xs-12">
                     <table id="tblFiles"></table>
 
@@ -163,10 +163,10 @@
       <script src="js/demo.js"></script>
       <script src="js/controller/token_controller.js"></script>
       <script type="text/javascript">
-      
+      var contextPathUrlDownload ="http://localhost:8091/";
     var configUpload = {
       uuidGPA: '12',
-      extensions:'pdf',
+      extensions:".doc, .docx, .pdf, .xls, .xlsx, .tif",
       maxSizeBytes :5000000,
       maxSizeBytesLabel : "5 Mb",
       langTag:'es'

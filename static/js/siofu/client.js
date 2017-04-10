@@ -321,6 +321,8 @@
 			inpt = document.createElement("input");
 			inpt.setAttribute("type", "file");
 			inpt.setAttribute("id", self.fileInputElementId);
+			
+			inpt.setAttribute("accept", fileUploadService.containerClient.config.extensions);
 			inpt.style.display = "none";
 			document.body.appendChild(inpt);
 		}

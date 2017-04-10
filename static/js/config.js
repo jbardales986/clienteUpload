@@ -38,7 +38,7 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 
 	var uploader = new SocketIOFileUpload(socket);
 	uploader.addEventListener("complete", function(event){
-		console.log(event);
+		console.log("complete");
 		//console.log( event.detail.fileexternal);
 		console.log( event.detail.fileexternal.name);
 		console.log( event.detail.fileexternal.extension);
@@ -73,19 +73,25 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	});
 	uploader.addEventListener("choose", function(event){
 		//flash("Archivos seleccionados: "+event.files);
+		console.log("choose 2");
+		console.log(event.file);
+
 	});
 	uploader.addEventListener("start", function(event){
+		console.log("start");
 		showElement(fileUploadService.idDivLoading);
-		console.log("GPA:" + fileUploadService.containerClient.config.uuidGPA);
-		event.file.meta.token = document.getElementById("tokenApp").value ;
+		//console.log("GPA:" + fileUploadService.containerClient.config.uuidGPA);
+		//event.file.meta.token = document.getElementById("tokenApp").value ;
+		event.file.meta.token = fileUploadService.containerClient.config.uuidGPA ;
 	});
 	uploader.addEventListener("progress", function(event){
-		console.log(event);
+		//console.log(event);
 		console.log("El archivo esta ", event.bytesLoaded/event.file.size*100, "porcentaje cargado");
 	});
 	uploader.addEventListener("load", function(event){
-		flash("Archivo cargado: "+event.file.name);
-		console.log(event);
+		console.log("load");
+		//flash("Archivo cargado: "+event.file.name);
+		//console.log(event);
 	});
 	uploader.addEventListener("error", function(event){
 		//flash("Error: "+event.message);
@@ -119,8 +125,8 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	document.getElementById("ul_btn").addEventListener("click", function(){
 		uploader.prompt();
 	}, false);
-	uploader.listenOnInput(document.getElementById("plain_input_element"));
-	uploader.listenOnDrop(document.getElementById("file_drop"));
+	//uploader.listenOnInput(document.getElementById("plain_input_element"));
+	//uploader.listenOnDrop(document.getElementById("file_drop"));
 
 	window.uploader = uploader;
 });
