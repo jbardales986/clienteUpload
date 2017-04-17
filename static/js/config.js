@@ -1,11 +1,19 @@
 requirejs.config({
 	paths: {
 		"SocketIOFileUpload": "/static/js/siofu/client",
-		"socket.io": "/static/js/socket.io/socket.io"
-	}
+		"socket.io"			: "/static/js/socket.io/socket.io",
+		'cryptojs.core'		: "/static/js/libs/cryptojs/components/core",
+        'cryptojs.md5'		: "/static/js/libs/cryptojs/components/md5"
+	},
+	shim: {
+		'cryptojs.md5': {
+			deps: ['cryptojs.core'],
+			exports: "CryptoJS"	//You can also use "CryptoJS.MD5"
+		}
+    }
 });
 
-require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
+require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, SocketIOFileUpload, CryptoJS) {
 	// jQuery version //Cambiar por estilo de osce
 	function flash(message){
 		(function(message){
@@ -74,29 +82,29 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	uploader.addEventListener("choose", function(event){
 		//flash("Archivos seleccionados: "+event.files);
 		console.log("choose 2");
-		console.log(event.file);
+		//console.log(event.file);
 
 	});
 	uploader.addEventListener("start", function(event){
 		console.log("start");
 		showElement(fileUploadService.idDivLoading);
-		//console.log("GPA:" + fileUploadService.containerClient.config.uuidGPA);
-		//event.file.meta.token = document.getElementById("tokenApp").value ;
+	
 		event.file.meta.token = fileUploadService.containerClient.config.uuidGPA ;
 	});
 	uploader.addEventListener("progress", function(event){
-		//console.log(event);
+		
 		console.log("El archivo esta ", event.bytesLoaded/event.file.size*100, "porcentaje cargado");
 	});
 	uploader.addEventListener("load", function(event){
-		console.log("load");
+		
+		
+		//event.file.meta.md5=fileUploadService.containerClient.config.md5;
 		//flash("Archivo cargado: "+event.file.name);
-		//console.log(event);
 	});
 	uploader.addEventListener("error", function(event){
 		//flash("Error: "+event.message);
 		hideElement(fileUploadService.idDivLoading);
-		console.log(event.message);
+		
 		if (event.code === 1) {
 			fileUploadService.showMessageError("El tamaño maximo de carga de archivo es :" + fileUploadService.containerClient.config.maxSizeBytesLabel );
 			fileUploadService.startAfterMethod();
@@ -108,7 +116,6 @@ require(["socket.io", "SocketIOFileUpload"], function (io, SocketIOFileUpload) {
 	//uploader.maxFileSize = 500 000 000;//500 mb
 	//uploader.maxFileSize = 1 000 000;//1 mb
 	if (typeof fileUploadService != "undefined") {
-		console.log(" esta fileUploadService");
 		console.log(fileUploadService.containerClient.jsonConfig);
 		console.log(fileUploadService.containerClient.config.maxSizeBytes);
 	}else{

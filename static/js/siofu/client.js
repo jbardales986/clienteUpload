@@ -2,6 +2,7 @@
  *                 Copyright (C) 2015 Shane Carr and others
  *                               X11 License
  *
+ 
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
@@ -134,6 +135,7 @@
 		var evntResult = _dispatch("start", {
 			file: file
 		});
+
 		if (!evntResult) return;
 
 		// Scope variables
@@ -143,6 +145,8 @@
 			useText = self.useText,
 			offset = 0,
 			newName;
+		
+
 		if (reader._realReader) reader = reader._realReader; // Support Android Crosswalk
 		uploadedFiles[id] = file;
 
@@ -194,8 +198,11 @@
 
 		// Callback when tranmission is complete.
 		var transmitDone = function () {
+			file.meta.md5=fileUploadService.containerClient.config.md5;
+			console.log("transmitDone :" + file.meta.md5 );
 			socket.emit("siofu_done", {
-				id: id
+				id: id,
+				meta: file.meta
 			});
 		}
 
@@ -207,6 +214,7 @@
 		//
 		// To compensate, we will manually load the file in chunks of a
 		// size specified by the user in the uploader.chunkSize property.
+
 		var processChunk = function () {
 			// Abort if we are told to do so.
 			if (communicator.abort) return;
@@ -245,6 +253,7 @@
 					name: newName
 				});
 				uploadComplete = true;
+
 			}
 		};
 		_listenTo(reader, "load", loadCb);
@@ -317,6 +326,10 @@
 	 */
 	var _getInputElement = function () {
 		var inpt = document.getElementById(self.fileInputElementId);
+		
+
+			
+
 		if (!inpt) {
 			inpt = document.createElement("input");
 			inpt.setAttribute("type", "file");
@@ -325,6 +338,7 @@
 			inpt.setAttribute("accept", fileUploadService.containerClient.config.extensions);
 			inpt.style.display = "none";
 			document.body.appendChild(inpt);
+
 		}
 		return inpt;
 	};
@@ -368,8 +382,22 @@
 	 */
 	var _fileSelectCallback = function (event) {
 		var files = event.target.files || event.dataTransfer.files;
+
+		var reader2 = new FileReader();
+        reader2.addEventListener('load',function () {
+          var hash = CryptoJS.MD5(CryptoJS.enc.Latin1.parse(this.result));
+          var md5 = hash.toString(CryptoJS.enc.Hex)
+          fileUploadService.containerClient.config.md5=md5;    
+          console.log("legal md5:"+ md5);
+       
+        });
+        reader2.readAsBinaryString(event.target.files[0]);
+
+
 		event.preventDefault();
 		_baseFileSelectCallback(files);
+
+		
 
 		if (self.resetFileInputs) {
 			try {
