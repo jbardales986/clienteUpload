@@ -553,7 +553,9 @@ a.jqGridUploadLinkClass:hover  {
   background-color: #008045;
   color: white;
 }
-
+.jqGridUpload.verticalAlignCenter {
+  float:right
+}
 a.jqGridUploadTooltipClass {
   color: inherit;
   white-space: pre-wrap;

@@ -10,6 +10,12 @@ function FileUploadService(dataParametros,
 		console.log("dataParametros " +dataParametros.containerClient.jsonConfig );
 		console.log("dataParametros " +dataParametros.containerClient.config.uuidGPA );
 		console.log("dataParametros " +dataParametros.containerClient.config.maxSizeBytes );
+
+		this.uploadButton=dataParametros.uploadButton;
+
+		this.divFilesTable=dataParametros.divFilesTable;
+		this.tblFiles=dataParametros.tblFiles;
+
 		this.containerClient = dataParametros.containerClient;
 		this.idDivLoading = dataParametros.idDivLoading;
 		this.idDivError = dataParametros.idDivError;

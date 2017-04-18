@@ -1,0 +1,77 @@
+  <div id="divJqGridFiles" class="row jqGridUpload">
+              <div class="row ">
+                   <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                      <button id="ul_btn"  type="button" class="btn btn-primary btn-sm" >Agregar</button> 
+                   </div>
+                  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                    <div id="divLoadingUploadFile" class="divLoadingClase">
+                      <span>
+                        <img src="../static/images/loader.gif" alt="loader">Cargando
+                      </span>
+                    </div>
+                  </div>
+                  
+                 
+              </div>
+
+              <div class="row ">
+                  <div id="divFilesTable" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <table id="tblFiles"></table>
+
+                    <div id="divFilesPagerTable" class="jqGridUploadPagerClass"></div>
+                  </div>
+              </div>
+
+</div><!-- divJqGridFiles-->
+ <div id="divScreenBlock" class="modal fade" data-keyboard="false" data-backdrop="static" >
+                <div class="container verticalAlignmentHelper">
+                  <div class="row verticalAlignR">
+                  </div>
+                </div>
+  </div>
+
+  <div id="divAlertMensajeError" class="modal fade" data-keyboard="false" data-backdrop="static" >
+        <div class="container uploadMensajeConfirmacionContainer verticalAlignmentHelper">
+          <div class="row verticalAlignCenter">
+            <div class="col-xs-12">
+              <div class="panel panel-danger">
+                <div class="panel-heading text-center"><span id="spaMensajeAlertaError"></span></div>
+                <div class="panel-body">
+                  <div class="row paddingTop10 marginBottom10">
+                    <div class="text-center">                            
+                      <button id="btnAlertMensajeError" type="button" class="btn btn-danger btn-sm">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div><!--divAlertMensajeError -->  
+
+  <div id="divMensajeConfirmar" class="modal fade" data-keyboard="false" data-backdrop="static" >
+        <div class="container uploadMensajeConfirmacionContainer verticalAlignmentHelper">
+          <div class="row verticalAlignCenter">
+            <div class="col-xs-12">
+              <div class="panel panel-primary">
+                <div class="panel-heading text-center"><span id="spanMensajeConfirmar"></span></div>
+                <div class="panel-body">
+                  <div class="row paddingTop10 marginBottom10">
+                    <div class="text-center">                            
+                      <button id="btnMensajeConfirmar" type="button" class="btn btn-primary btn-sm center-block centerBlockBotonSmallClass">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div><!--divMensajeConfirmar -->  
+
+  <div id="divScreenBlock" class="modal fade" data-keyboard="false" data-backdrop="static" >
+        <div class="container verticalAlignmentHelper">
+          <div class="row verticalAlignCenter">
+          </div>
+        </div>
+  </div><!--divScreenBlock --> 

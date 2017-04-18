@@ -13,16 +13,25 @@ var clientCompleteAfterMethod = function(){
 
 var fileUploadService = new FileUploadService();
 
+function initElementMessage(){
+	addEventElement("btnAlertMensajeError", "click", clickBtnAlertMensajeError);
+    addEventElement("btnMensajeConfirmar", "click", clickBtnMensajeConfirmar);
+}
 function initElementsUploadService(containerClient) {
+	
+	initElementMessage();
 
 	console.log("initElementsUploadService");
-	setInitFilesTable();
-	addEventElement("btnAlertMensajeError", "click", clickBtnAlertMensajeError);
-	addEventElement("btnMensajeConfirmar", "click", clickBtnMensajeConfirmar);
+	
 	
 	var dataParametros = new Object();
 	dataParametros.containerClient = containerClient;
 	
+
+	dataParametros.uploadButton="ul_btn";
+	
+	dataParametros.divFilesTable="dataParametros"
+	dataParametros.tblFiles="tblFiles";
 
 	dataParametros.idDivLoading = "divLoadingUploadFile";
 	dataParametros.idDivError = "divAlertMensajeError";
@@ -33,19 +42,22 @@ function initElementsUploadService(containerClient) {
 
 	//dataParametros.errorMessage = errorMessageBuscarUsuarioInput;
 	fileUploadService = new FileUploadService(dataParametros, clientStartAfterMethod, clientCompleteAfterMethod);
+	setInitFilesTable();
 }
 function clickBtnAlertMensajeError(){
+	console.log("clickBtnAlertMensajeError");
 	$("#divAlertMensajeError").modal("hide");
 }
 
 function clickBtnMensajeConfirmar(){
+	console.log("clickBtnMensajeConfirmar");
 	$("#divMensajeConfirmar").modal("hide");
 }
 
 
 
 function setInitFilesTable() {
-	var filesTable = $("#tblFiles");
+	var filesTable = $("#" + fileUploadService.tblFiles );
 	var heightJqGrid = 200;
 	setStyleElement("divFilesTable", "height", obtenerHeightJqGridDiv(heightJqGrid, 2, true));
 	if (filesTable) {
@@ -91,7 +103,7 @@ function setInitFilesTable() {
 			rowattr: function(dataTable) {
 				
 			},
-			pager: "#divFilesPagerTable",
+			
 			loadui: "disable",
 			caption: "Archivos"
 		});
