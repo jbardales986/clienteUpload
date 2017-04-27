@@ -758,3 +758,14 @@ a.jqGridUploadTooltipClass {
     width: auto;
     vertical-align: middle;
 }
+
+
+.ui-jqgrid.ui-jqgrid-bootstrap .ui-jqgrid-caption {
+    background-color: #e6f0ff;
+}
+.ui-jqgrid.ui-jqgrid-bootstrap .ui-jqgrid-hdiv {
+    background-color: #cce0ff !important;
+}
+.ui-jqgrid-bdiv{
+    background-color: #f6f6f6 !important;
+}

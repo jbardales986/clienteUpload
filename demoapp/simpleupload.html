@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="../static/js/libs/jquery-ui/1.11.2/css/jquery-ui.min.css" />
       <link rel="stylesheet" href="../static/js/libs/jqgrid/4.6.0/css/ui.jqgrid.css" />
 
-        <link href="css/app.css"  rel="stylesheet"></link>
+      <link href="css/app.css"  rel="stylesheet"></link>
   </head>
   <body ng-app="myApp" class="ng-cloak">
       <div class="container uploadContainer" ng-controller="TokenController as ctrl">
@@ -62,6 +62,7 @@
                           <div class="form-actions floatRight">
                               <input type="submit"  value="{{!ctrl.token.id ? 'Token' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
                               <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" >Limpiar</button>
+                              <button type="button" onclick="clickLinkSaveFiles()" class="btn btn-primary btn-sm" >Guardar</button>
                           </div>
                       </div>
                   </form>
@@ -78,7 +79,7 @@
            
        
          
-         <div id="includedContentUpload"></div>
+         <div id="includedContentUpload"  ></div>
       </div><!--uploadContainer -->
         
       
@@ -105,6 +106,8 @@
       <script type="text/javascript">
       //configurandno la aplicacion
       var contextPathUrlDownload ="http://localhost:8091/";
+      var contextPathUrlIntegrador ="http://localhost:8090/";
+      
       var configUpload = {
           uuidGPA: '12',
           extensions:".doc, .docx, .pdf, .xls, .xlsx, .tif",

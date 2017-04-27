@@ -55,7 +55,7 @@ require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, Socke
 		var FileExternal= {
 						uuidGPA	: event.detail.fileexternal.uuidGPA ,
 						uuidFile :event.detail.fileexternal.uuidFile ,
-						idStore	: '',
+						idStore	: event.detail.fileexternal.idStore,
 						name	: event.detail.fileexternal.name ,
 						extension : event.detail.fileexternal.extension ,
 						mimeType  : event.detail.fileexternal.mimeType ,
@@ -65,14 +65,14 @@ require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, Socke
 						};
 		fileUploadService.containerClient.data.push(FileExternal);
 		console.log("rows:" +  fileUploadService.containerClient.data.length );
-		var fileTable = $("#tblFiles");
+		var fileTable = $("#" +  fileUploadService.tblFiles );
 		var datarow = {
 							row :fileUploadService.containerClient.data.length,
 							name: FileExternal.name,
 							sizeLabel: FileExternal.sizeLabel,
 							extension: FileExternal.extension
 						};
-		fileTable.jqGrid("addRowData", event.detail.fileexternal.name, datarow);
+		fileTable.jqGrid("addRowData", fileUploadService.containerClient.data.length - 1 , datarow);
 		fileTable.trigger("reloadGrid");
 		hideElement(fileUploadService.idDivLoading);
 		fileUploadService.showMessageInfo("Se Cargo Correctamente el Archivo");
@@ -129,7 +129,7 @@ require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, Socke
 	uploader.chunkSize = 1024 * 1024;
 	//uploader.useText = true;
 	//uploader.serializedOctets = true;
-	document.getElementById("ul_btn").addEventListener("click", function(){
+	document.getElementById(fileUploadService.uploadButton).addEventListener("click", function(){
 		uploader.prompt();
 	}, false);
 	//uploader.listenOnInput(document.getElementById("plain_input_element"));
