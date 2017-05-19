@@ -23,12 +23,12 @@
               <div class="panel-heading"><span class="lead">Token   Ciente</span></div>
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
-                      <input type="hidden" ng-model="ctrl.token.id" />
+                      
                       <div class="row">
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="file">Nombre</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.token.user" name="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
+                                  <input type="text" ng-model="ctrl.token.user" name="user" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3" id="txtuser"/>
                                   <div class="has-error" ng-show="myForm.$dirty">
                                       <span ng-show="myForm.uname.$error.required">Es un campo requerido</span>
                                       <span ng-show="myForm.uname.$error.minlength">Requiere un minimo de 3 caracteres</span>
@@ -42,7 +42,7 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="file">Correo</label>
                               <div class="col-md-7">
-                                  <input type="email" ng-model="ctrl.token.email" name="email" class="email form-control input-sm" placeholder="Enter your Email" required/>
+                                  <input type="text" ng-model="ctrl.token.password" name="password" class="username form-control input-sm" placeholder="Enter your password" id="txtmail" required/>
                                   <div class="has-error" ng-show="myForm.$dirty">
                                       <span ng-show="myForm.email.$error.required">Es un campo requerido </span>
                                       <span ng-show="myForm.email.$invalid">Es un campo invalido</span>
@@ -60,7 +60,7 @@
                       </div>
                       <div class="row">
                           <div class="form-actions floatRight">
-                              <input type="submit"  value="{{!ctrl.token.id ? 'Token' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+                              <input type="submit"  value="{{!ctrl.token.id ? 'Token' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid" id="btnToken">
                               <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" >Limpiar</button>
                               <button type="button" onclick="clickLinkSaveFiles()" class="btn btn-primary btn-sm" >Guardar</button>
                           </div>
@@ -69,7 +69,7 @@
               </div>
           </div>
           
-           <!-- <input type="file" id="plain_input_element"  accept=".jpg, .png, .jpeg, .gif, .bmp, .tif" /><br> -->
+            <input type="file" id="plain_input_element"  accept=".jpg, .png, .jpeg, .gif, .bmp, .tif" /><br> 
 
            
           
@@ -109,12 +109,14 @@
       var contextPathUrlIntegrador ="http://localhost:8090/";
       
       var configUpload = {
-          uuidGPA: '12',
-          extensions:".doc, .docx, .pdf, .xls, .xlsx, .tif",
-          maxSizeBytes :10000000,
-          maxSizeBytesLabel : "10 Mb",
+          uuidGPA: 'seace',
+          token: '',
+          extensions:".doc, .docx, .pdf, .xls, .xlsx, .tif, .mp4",
+          maxSizeBytes :2000000000,
+          maxSizeBytesLabel : "2 gb",
           md5:'',
-          langTag:'es'
+          langTag:'es',
+          idStore:'2'
         };
         var fileUpload=[];
         var ContainerClient ={ 

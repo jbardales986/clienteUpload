@@ -387,6 +387,7 @@
         reader2.addEventListener('load',function () {
           var hash = CryptoJS.MD5(CryptoJS.enc.Latin1.parse(this.result));
           var md5 = hash.toString(CryptoJS.enc.Hex)
+ 
           fileUploadService.containerClient.config.md5=md5;    
           console.log("legal md5:"+ md5);
        

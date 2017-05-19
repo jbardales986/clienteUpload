@@ -43,6 +43,7 @@ function initElementsUploadService(containerClient) {
 	//dataParametros.errorMessage = errorMessageBuscarUsuarioInput;
 	fileUploadService = new FileUploadService(dataParametros, clientStartAfterMethod, clientCompleteAfterMethod);
 	setInitFilesTable();
+	
 }
 function clickBtnAlertMensajeError(){
 	console.log("clickBtnAlertMensajeError");
@@ -117,10 +118,7 @@ function setInitFilesTable() {
 function clickLinkDescargarDocumento(row){
 		console.log(" clickLinkDescargarDocumento" + row);
 		var fileTemp= fileUploadService.containerClient.data[row - 1];
-		console.log(fileTemp);
-		var encodeParam = "0/uuid/"+fileTemp.uuidFile+"/gpa/"+fileTemp.uuidGPA;
-		console.log("nombre:" +  fileTemp.name);
-
+		var encodeParam = "0/gpa/"+fileTemp.uuidGPA+"/uuid/"+fileTemp.uuidFile;	
 	location.href = contextPathUrlDownload + "downloaddocument/" + encodeParam;
 }
 
@@ -172,13 +170,6 @@ function clickLinkEliminarDocumento(row){
 						console.log("row:"+ row);
 						filesTable.jqGrid("delRowData", row - 1);
 						filesTable.trigger("reloadGrid");
-						//var filesTableArray = filesTable.jqGrid("getRowData");
-						//filesTable.clearGridData();
-						
-						//if (filesTableArray.length == 0) {
-
-						//}
-						
 						
 					}
 					else {
@@ -259,3 +250,4 @@ function clickLinkSaveFiles(){
 		});
 	
 }
+

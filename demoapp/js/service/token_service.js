@@ -18,9 +18,11 @@ App.factory('TokenService', ['$http', '$q', function($http, $q){
 			},
 		    
 		    createToken: function(token){
-					return $http.post('http://osce.gob.pe.upload:8090/token/', token)
+		    	console.log('seenvia:' +  token);
+					return $http.post('http://osce.gob.pe.upload:8090/token/', token , {headers: {'Content-Type': 'application/json'} })
 							.then(
 									function(response){
+										console.log("response:" + response.headers)
 										return response.data;
 									}, 
 									function(errResponse){

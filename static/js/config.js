@@ -88,12 +88,16 @@ require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, Socke
 	uploader.addEventListener("start", function(event){
 		console.log("start");
 		showElement(fileUploadService.idDivLoading);
+		
+			event.file.meta.token = fileUploadService.containerClient.config.token ;
+			event.file.meta.uuidGPA = fileUploadService.containerClient.config.uuidGPA ;
+			event.file.meta.idStore = fileUploadService.containerClient.config.idStore ;
 	
-		event.file.meta.token = fileUploadService.containerClient.config.uuidGPA ;
+		
 	});
 	uploader.addEventListener("progress", function(event){
 		
-		console.log("El archivo esta ", event.bytesLoaded/event.file.size*100, "porcentaje cargado");
+		console.log("El archivo esta ", parseInt(event.bytesLoaded/event.file.size*100), "porcentaje cargado");
 	});
 	uploader.addEventListener("load", function(event){
 		
@@ -116,7 +120,7 @@ require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, Socke
 	//uploader.maxFileSize = 500 000 000;//500 mb
 	//uploader.maxFileSize = 1 000 000;//1 mb
 	if (typeof fileUploadService != "undefined") {
-		console.log(fileUploadService.containerClient.jsonConfig);
+		//console.log(fileUploadService.containerClient.jsonConfig);
 		console.log(fileUploadService.containerClient.config.maxSizeBytes);
 	}else{
 		console.log("no esta ");
@@ -132,7 +136,7 @@ require(["socket.io", "SocketIOFileUpload", "cryptojs.md5"], function (io, Socke
 	document.getElementById(fileUploadService.uploadButton).addEventListener("click", function(){
 		uploader.prompt();
 	}, false);
-	//uploader.listenOnInput(document.getElementById("plain_input_element"));
+	uploader.listenOnInput(document.getElementById("plain_input_element"));
 	//uploader.listenOnDrop(document.getElementById("file_drop"));
 
 	window.uploader = uploader;
